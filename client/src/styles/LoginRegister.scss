@@ -10,7 +10,7 @@ body {
     align-items: center;
 }
 
-.loginArea {
+.authBox {
     background-color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
@@ -21,7 +21,7 @@ body {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.366);
 }
 
-.loginTextArea {
+.authBox .titleTextArea {
     font-size: 40px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.863);
@@ -30,7 +30,7 @@ body {
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.366);
 }
 
-.loginTextArea p {
+.authBox .titleTextArea p {
     display: inline-block;
     margin: 0;
     white-space: nowrap;
@@ -41,12 +41,12 @@ body {
     /* Creates the blinking cursor effect */
 }
 
-.line1 {
+.authBox .titleTextArea .line1 {
     animation: typing 1.5s steps(30, end) forwards, blink 0.75s step-end infinite;
     width: 0;
 }
 
-.line2 {
+.authBox .titleTextArea .line2 {
     animation: typing 1.0s steps(30, end) 1.5s forwards, blink 0.75s step-end infinite 1.8s;
     width: 0;
 }
@@ -71,20 +71,20 @@ body {
     }
 }
 
-.loginForm {
+.authBox .authForm {
     display: flex;
     flex-direction: column;
     margin-bottom: 70px;
     box-sizing: border-box;
 }
 
-.registerArea {
+.authBox .footerArea {
     height: 150px;
     box-sizing: border-box;
     text-align: center;
 }
 
-.inputBox {
+.authBox .inputBox {
     margin: 10px 0;
     font-size: 20px;
     border: none;
@@ -92,12 +92,12 @@ body {
     box-sizing: border-box;
 }
 
-.inputBox:focus {
+.authBox .inputBox:focus {
     outline: none;
     border-bottom: 2px solid rgba(41, 41, 41, 0.774);
 }
 
-.loginButton {
+.authBox .submitButton {
     padding: 15px 20px;
     /* Increase padding to make the button taller */
     font-size: 19px;
@@ -113,26 +113,26 @@ body {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.366);
 }
 
-.loginButton:hover {
+.authBox .submitButton:hover {
     background: linear-gradient(45deg, #1aafb4, #430150);
     color: rgb(224, 224, 224);
 }
 
-.loginButton:active {
+.authBox .submitButton:active {
     background: linear-gradient(45deg, #1aafb4ec, #430150d5);
     color: rgb(224, 224, 224);
 }
 
-a {
+.authBox a {
     text-decoration: none;
     color: rgb(31, 78, 221);
 }
 
-a:hover {
+.authBox a:hover {
     text-decoration: underline;
     cursor: pointer;
 }
 
-p {
+.authBox p {
     margin: 8px;
 }

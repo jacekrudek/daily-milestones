@@ -1,48 +1,62 @@
 // src/components/Register.js
-import React, { useState } from 'react';
-import '../styles/Register.scss'; // Import the SCSS file for styling
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/LoginRegister.scss"; // Import the SCSS file for styling
 
 function Register() {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle registration logic here
-        console.log('Username:', username);
-        console.log('Email:', email);
-        console.log('Password:', password);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle registration logic here
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
 
-    return (
-        <div className="registerArea">
-            <h1 className="registerText">Register</h1>
-            <form className="registerForm" onSubmit={handleSubmit}>
-                <div className="inputContainer">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="inputContainer">
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit" className="registerButton">Register</button>
-            </form>
+  const handleLoginRedirect = () => {
+    navigate("/login");
+  };
+
+  return (
+    <div className="authBox">
+      <div className="footerArea">
+        <p>
+          Back to <a onClick={handleLoginRedirect}>login</a>
+        </p>
+      </div>
+      <form className="authForm" onSubmit={handleSubmit}>
+        <div className="inputContainer">
+          <input
+            className="inputBox"
+            type="email"
+            id="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-    );
+        <div className="inputContainer">
+          <input
+            className="inputBox"
+            type="password"
+            id="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="submitButton">
+          Register
+        </button>
+      </form>
+      <div className="titleTextArea">
+        <p className="line1">It is a good time</p>
+        <p className="line2">to start!</p>
+      </div>
+    </div>
+  );
 }
 
 export default Register;
