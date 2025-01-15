@@ -4,16 +4,6 @@ import Login from "./Login";
 import Register from "./Register";
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-
-  useEffect(() => {
-    fetch("/api")
-      .then((response) => response.json())
-      .then((data) => {
-        setBackendData(data);
-      });
-  }, []);
-
   return (
     <Router>
       <Routes>
@@ -23,23 +13,6 @@ function App() {
       </Routes>
     </Router>
   );
-
-  /*{ {(typeof backendData.users === 'undefined') ? (
-        <div>loading...</div>
-      ) : (
-        <div>
-          <h1>Users</h1>
-          <ul>
-            {backendData.users.map((user, index) => (
-              <li key={index}>{user}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-    </div>
-  )
-} */
 }
 
 export default App;

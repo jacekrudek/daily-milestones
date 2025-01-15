@@ -6,13 +6,35 @@ import "../styles/LoginRegister.scss";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     // Handle login logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+    console.log(email, password);
+
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+
+      const data = await response.json();
+
+      localStorage.setItem("token", data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const handleRegisterRedirect = () => {
