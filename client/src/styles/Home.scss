@@ -1,53 +1,91 @@
 // src/styles/Home.scss
-html, body {
-    margin: 0;    /* Remove default margin */
-    padding: 0;   /* Remove default padding */
-    border: 2px solid blue;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-grow: 1;
-}
-
-#root {
-    width: 100%;
-}
-
 .homeContainer {
     display: flex;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
-    border: 2px solid green;
     margin: 0;
+  }
+
+  .pageCenter {
+    display: flex;    
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba($color: #303030, $alpha: 1.0);
+    font-size: 30px;
+    padding: 0;
+    text-shadow: 0px 0px 4px rgba($color: #000000, $alpha: 0.5);
+  }
+
+  h1 {
+    margin: 20px;
   }
 
   .navbar {
     width: 200px; /* Set the width of the navbar */
     padding: 20px;
-    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .navbar ul {
     list-style-type: none; /* Remove default list styling */
     padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
   }
   
   .navbar li {
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #3bd8ff9a;
     margin-bottom: 10px;
+    flex-grow: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.767);
+    border: 1px solid #ccc;
+    border-radius: 4px;    
+    box-shadow:0px 0px 4px rgba($color: #000000, $alpha: 1);
+  }
+
+  .navbar li:hover {
+    margin-bottom: 10px;
+    flex-grow: 1;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9c9c9c;
+    color: white;
+    cursor: pointer;
   }
   
   .navbar a {
     text-decoration: none;
-  }
-  
-  .navbar a:hover {
-    text-decoration: underline;
-  }
+  }  
   
   .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr); // 7 columns for 7 days of the week
     gap: 30px;
+    background-color: #bebebe;;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     //width: 100%;
+    flex-grow: 1;
+    margin: 5px;
+    padding: 20px;
+    padding-left: 100px;
+    border: 2px solid #888888;
   }
   
   .dayTile {
@@ -62,6 +100,78 @@ html, body {
     font-weight: bold;
     height: 80px; 
     width: 100px;
+    box-shadow:0px 0px 4px rgba($color: #000000, $alpha: 0.5);
+    cursor: pointer;
+  }
+
+  .dayTile.orange {
+    background-color: orange;
+  }
+  
+  .dayTile.green {
+    background-color: green;
+  }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    max-width: 80%;
+    overflow: auto;
+    word-wrap: break-word;
+  }
+  
+  .popupContent {
+    position: relative;
+  }
+
+  .popupHeader {
+    margin: 0;
+    font-size: 40px;
+  }
+
+  .goalList {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .goal {
+    margin: 10px;
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  .tickButton {
+    background-color: #1d5c1bb7;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
   }
   
   .footerArea {
