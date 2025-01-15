@@ -6,13 +6,39 @@ import "../styles/LoginRegister.scss"; // Import the SCSS file for styling
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+    setError("");
+    setMessage("");
+    setShowPopup(false);
+    // Handle login logic here
+    console.log(email, password);
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+        setShowPopup(true);
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const handleLoginRedirect = () => {
@@ -55,6 +81,16 @@ function Register() {
         <p className="line1">It is a good time</p>
         <p className="line2">to start!</p>
       </div>
+      {showPopup && (
+        <div className="register popup">
+          <div className="registerPopupContent">
+            <h2>Registration Successful</h2>
+            <button onClick={handleLoginRedirect} className="submitButton">
+              Back to Login
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
