@@ -6,6 +6,35 @@ function Home() {
   const navigate = useNavigate();
   const [selectedDay, setSelectedDay] = useState(null);
   const [tickedItems, setTickedItems] = useState({});
+  const [data, setData] = useState(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
+
+      try {
+        const response = await fetch("/api/home", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleLogout = () => {
     navigate("/login");
